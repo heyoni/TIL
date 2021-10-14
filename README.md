@@ -1,5 +1,9 @@
 # TIL(Today I Learned)
-일일커밋(https://blog.outsider.ne.kr/1141)과 관련된 글을 보고 다시하는 일일커밋
++ [일일커밋](https://blog.outsider.ne.kr/1141)과 관련된 글을 보고 다시하는 일일커밋,  
+하루동안 공부한 내용을 정리해서 기록합니다.  
+- [Outsider](https://github.com/outsideris)님, [JayJin](https://github.com/milooy)님, [Lee HyunJoo](https://wayhome25.github.io/)님, [RingoPPA](https://github.com/ksu3101)님, [최민서](https://github.com/mangdo)님 [Namjun Kim](https://github.com/namjunemy)님 Github TIL을 참고했습니다.
+
+    
 ## 일일 커밋의 규칙
 1. 의미 없는 커밋은 하지 않는다.  
     - 평소에도 할만한 커밋만을 작성한다. (스스로 양심에 맡긴다.) 예를 들어 Readme에 의미 없는 줄 바꿈 등은 하지 않는다.
@@ -12,4 +16,20 @@
 5. 공개 저장소에 커밋하는 내용을 기준으로 한다. 
     - Github의 공개 컨트리뷰션 그래프에 그려지는 것을 기준으로 한다.
 
+
 ## 목표
+- 누군가에게 이 TIL이 참고가 되었다고 태그 되어 보기  
+  
+
+## 작성요령
+* 적자생존 : 적지 않으면 잊어버린다.
+* 폴더와 파일명은 영문으로 작성한다.
+* 해당 문서를 다시 봤을 때, 추가적인 검색의 비용이 들지 않도록 자세히 기록한다.
+* 더 많은 공유를 원하는 기록은 [블로그](https://blog.naver.com/alxh7895)에 포스팅한다.
+* 쉴 땐 확실히 쉬고, contributions를 초록색으로 채우는 것에 집착하지 않는다.
+* reference를 명시하고, 원작자가 참고를 허용하는 자료만 사용한다.
+
+---
+## 분류
+
+### Django
