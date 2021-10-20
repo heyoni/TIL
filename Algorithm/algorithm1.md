@@ -98,3 +98,16 @@ print(r.hour, r.minute)
 시간 값의 hour, minute은 '.'을 이용하여 접근할 수 있다.
 - strftime : 시간을 문자열로 출력하기
 - timedelta : 시간 연산/ 주는 week, 일은 days... 여기서는 분으로 입력받으므로 min사용
+
+
+## [7. 인공지능 시계(2530번)](https://www.acmicpc.net/problem/2530)
+훈제오리구이를 시작하는 시각과 오븐구이를 하는 데 필요한 시간이 초 단위로 주어졌을 때, 오븐구이가 끝나는 시각을 계산하는 프로그램을 작성하시오.
+
+```python
+import datetime
+d = datetime.datetime.strptime(input(), '%H %M %S')
+r = d+datetime.timedelta(seconds=int(input()))
+print(r.hour, r.minute, r.second)
+```
+위에서 풀었던 방식과 같다.
+
