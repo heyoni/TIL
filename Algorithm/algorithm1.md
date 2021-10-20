@@ -1,6 +1,7 @@
 # 백준 알고리즘 - Bronze IV
 https://solved.ac/problems/level/2
 
+
 ## [1. A/B(1008번)](https://www.acmicpc.net/problem/1008)
 두 정수 A와 B를 입력받은 다음, A/B를 출력하는 프로그램을 작성하시오.
 ```python
@@ -10,6 +11,7 @@ print(a/b)
 ### map
 - 형과 리스트를 넣으면 형으로 변환 후 다시 리스트로 반환해 줌.
 - ```map(int, input().split())``` 는 input을 받은 값을 int형으로 변환 후 리스트로 반환해준다.
+
 
 ## [2. TV 크기(1297번)](https://www.acmicpc.net/problem/1297)
 TV의 대각선 길이와, 높이 너비의 비율이 주어졌을 때, 실제 높이와 너비의 길이를 출력하는 프로그램을 작성하시오.
@@ -58,6 +60,7 @@ print(abs(a-b))
 ```
 ~~오랜만에 보는~~ 절대값 : abs 함수를 사용하면 된다.
 
+
 ## [5. 주사위 세개(2480번)](https://www.acmicpc.net/problem/2480)
 1에서부터 6까지의 눈을 가진 3개의 주사위를 던져서 다음과 같은 규칙에 따라 상금을 받는 게임이 있다. 
 
@@ -98,3 +101,36 @@ print(r.hour, r.minute)
 시간 값의 hour, minute은 '.'을 이용하여 접근할 수 있다.
 - strftime : 시간을 문자열로 출력하기
 - timedelta : 시간 연산/ 주는 week, 일은 days... 여기서는 분으로 입력받으므로 min사용
+
+
+## [7. 인공지능 시계(2530번)](https://www.acmicpc.net/problem/2530)
+훈제오리구이를 시작하는 시각과 오븐구이를 하는 데 필요한 시간이 초 단위로 주어졌을 때, 오븐구이가 끝나는 시각을 계산하는 프로그램을 작성하시오.
+
+```python
+import datetime
+d = datetime.datetime.strptime(input(), '%H %M %')
+r = d+datetime.timedelta(minutes=int(input()))
+print(r.hour, r.minute)
+```
+우선 입력받은 숫자들을 datetime 형식으로 바꿔준다. 그리고 두번째 줄에서 입력받은 값을 timedelta를 이용하여 연산하고 그 결과를 표시해준다.  
+시간 값의 hour, minute은 '.'을 이용하여 접근할 수 있다.
+- strftime : 시간을 문자열로 출력하기
+- timedelta : 시간 연산/ 주는 week, 일은 days... 여기서는 분으로 입력받으므로 min사용
+
+
+## [8. 곱셈(2588번)](https://www.acmicpc.net/problem/2588)
+```python
+a = int(input())
+b = input()
+c = list(map(int,list(b)))[::-1]
+for i in c:
+    print(a*i)
+print(a*int(b))
+```
+
+
+## [9. 세 수 정렬(2752번)](https://www.acmicpc.net/problem/2752)
+```python
+a = ' '.join(list(map(str,(sorted(list(map(int,input().split())))))))
+print(a)
+```
