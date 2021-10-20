@@ -127,7 +127,10 @@ print(a*int(b))
 
 
 ## [9. 세 수 정렬(2752번)](https://www.acmicpc.net/problem/2752)
+숫자 세 개가 주어졌을 때, 가장 작은 수, 그 다음 수, 가장 큰 수를 출력하는 프로그램을 작성하시오.
 ```python
 a = ' '.join(list(map(str,(sorted(list(map(int,input().split())))))))
 print(a)
-
+```
+숫자 세 개를 int형으로 변환하여 정렬한 뒤 그걸 다시 string 형으로 변환해준다. 그 다음 join을 이용하여 문자열로 만들어서 print 해줌.
+- 더 좋은 방법이 있을 것 같음..
