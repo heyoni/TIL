@@ -108,6 +108,7 @@ print(r.hour, r.minute)
 
 ```python
 import datetime
+<<<<<<< HEAD
 d = datetime.datetime.strptime(input(), '%H %M %')
 r = d+datetime.timedelta(minutes=int(input()))
 print(r.hour, r.minute)
@@ -134,3 +135,11 @@ print(a*int(b))
 a = ' '.join(list(map(str,(sorted(list(map(int,input().split())))))))
 print(a)
 ```
+=======
+d = datetime.datetime.strptime(input(), '%H %M %S')
+r = d+datetime.timedelta(seconds=int(input()))
+print(r.hour, r.minute, r.second)
+```
+위에서 풀었던 방식과 같다.
+
+>>>>>>> e6f54ba61c09908ffc8f6ba381423674bc9c45f8
