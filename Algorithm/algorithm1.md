@@ -106,17 +106,13 @@ print(r.hour, r.minute)
 ## [7. 인공지능 시계(2530번)](https://www.acmicpc.net/problem/2530)
 훈제오리구이를 시작하는 시각과 오븐구이를 하는 데 필요한 시간이 초 단위로 주어졌을 때, 오븐구이가 끝나는 시각을 계산하는 프로그램을 작성하시오.
 
-```python
-import datetime
-<<<<<<< HEAD
-d = datetime.datetime.strptime(input(), '%H %M %')
-r = d+datetime.timedelta(minutes=int(input()))
-print(r.hour, r.minute)
 ```
-우선 입력받은 숫자들을 datetime 형식으로 바꿔준다. 그리고 두번째 줄에서 입력받은 값을 timedelta를 이용하여 연산하고 그 결과를 표시해준다.  
-시간 값의 hour, minute은 '.'을 이용하여 접근할 수 있다.
-- strftime : 시간을 문자열로 출력하기
-- timedelta : 시간 연산/ 주는 week, 일은 days... 여기서는 분으로 입력받으므로 min사용
+d = datetime.datetime.strptime(input(), '%H %M %S')
+r = d+datetime.timedelta(seconds=int(input()))
+print(r.hour, r.minute, r.second)
+```
+위에서 풀었던 방식과 같다.
+
 
 
 ## [8. 곱셈(2588번)](https://www.acmicpc.net/problem/2588)
@@ -134,12 +130,4 @@ print(a*int(b))
 ```python
 a = ' '.join(list(map(str,(sorted(list(map(int,input().split())))))))
 print(a)
-```
-=======
-d = datetime.datetime.strptime(input(), '%H %M %S')
-r = d+datetime.timedelta(seconds=int(input()))
-print(r.hour, r.minute, r.second)
-```
-위에서 풀었던 방식과 같다.
 
->>>>>>> e6f54ba61c09908ffc8f6ba381423674bc9c45f8
