@@ -148,3 +148,11 @@ elif a % 400 ==0:
 else:
     print(0)
 ```
+### 숏코딩
+```python
+a=int(input())
+print(int(a%400==0 or (a%100!=0 and a%4==0)))
+```
+조건문 없이 논리연산만으로도 가능하다.
+
+
