@@ -165,7 +165,29 @@ import math
 n = int(input())
 print(int((math.ceil(n/2))+1)*(n//2+1))
 ```
-round 함수를 썼는데 1/2를 했을 때 1이 아닌 0으로 변환되었다.  
+처음에는 round 함수를 썼는데 1/2를 했을 때 1이 아닌 0이 나왔다.  
 > 파이썬의 반올림은 반올림 하려는 수가 올림, 내림했을 때 동일하게 차이가 나는 경우에는 *짝수* 값으로 반올림 합니다.  
 
 python에서 0은 짝수로 치니.. 제대로 된 답이 나오지 않음!
+
+
+## [12. 방학 숙제(5532번)](https://www.acmicpc.net/problem/5532)
+방학은 총 L일이다. 수학은 총 B페이지, 국어는 총 A페이지를 풀어야 한다. 상근이는 하루에 국어를 최대 C페이지, 수학을 최대 D페이지 풀 수 있다.
+
+상근이가 겨울 방학동안 숙제를 하지 않고 놀 수 있는 최대 날의 수를 구하는 프로그램을 작성하시오.
+```python
+import math
+n = int(input())
+a = int(input())
+b = int(input())
+c = int(input())
+d = int(input())
+
+k = n-math.ceil(b/d)
+l = n-math.ceil(a/c)
+if k<l:
+    print(k)
+else:
+    print(l)
+```
+
