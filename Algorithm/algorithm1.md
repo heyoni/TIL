@@ -223,3 +223,35 @@ for _ in range(3):
 ```
 단순한 사칙연산 문제였지만 time문을 쓰려다가 더 복잡하게 되었다.  
 문제의 답이 잘 안보일 땐 단순하게 생각하는 능력 기르기!
+
+
+## [15. 시험 점수(5596번)](https://www.acmicpc.net/problem/5596)
+민국이의 총점 S와 만세의 총점 T 중에서 큰 점수를 출력하는 프로그램을 작성하시오.
+```python
+a = sum(list(map(int,input().split())))
+b = sum(list(map(int,input().split())))
+print(max(a,b))
+```
+
+
+## [16. 시험 점수(5596번)](https://www.acmicpc.net/problem/5596)
+상근이의 여자친구는 항상 이진수에 17을 곱한다. 즉, 이진수 N이 입력으로 들어오면 17을 곱한 다음 이진수로 출력하는 프로그램을 작성하시오.
+```python
+print(bin(int(input(),2)*17)[2:])
+```
+2진수 변환 : bin(값,2)
+
+
+## [17. Contest Timing(5928번)](https://www.acmicpc.net/problem/5928)
+ Given the date and time she stops working, please help Bessie compute the total number of minutes she will have spent on the contest.(start time : 11:11 AM on 11/11/11.) (output : minutes)
+```python
+d,h,m=map(int,input().split())
+r = (d*24*60+h*60+m)-(11*24*60+11*60+11)
+if r<0:print(-1)
+else: print(r)
+```
+### 숏코딩
+```python
+d,h,m=map(int,input().split())
+print(max((d*24*60+h*60+m)-(11*24*60+11*60+11),-1))
+```
