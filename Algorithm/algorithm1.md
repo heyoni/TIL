@@ -255,3 +255,47 @@ else: print(r)
 d,h,m=map(int,input().split())
 print(max((d*24*60+h*60+m)-(11*24*60+11*60+11),-1))
 ```
+-1 조건을 제대로 못봐서 틀렸는데, max를 이용하여 더 짧게 코딩할 수 있었다!
+
+
+## [17. Speed fines are not fine!(6763번)](https://www.acmicpc.net/problem/6763)
+The input will be two integers. The first line of input will be speed limit. The second line of input will be the recorded speed of the car.
+```python
+a=int(input())
+b=int(input())
+r=b-a
+if r>30:
+    print('You are speeding and your fine is $500.')
+elif r>20:
+    print('You are speeding and your fine is $270.')
+elif r>0:
+    print('You are speeding and your fine is $100.')
+else:
+    print('Congratulations, you are within the speed limit!')
+```
+### 숏코딩
+```python
+a,b=int(input()),int(input())
+d=b-a
+print(["Congratulations, you are within the speed limit!",f"You are speeding and your fine is ${[10,[27,50][d>30]][d>20]}0."][b>a])
+```
+이건 쓸 수 있을 것 같은데 막상 코드로 안뱉어짐.... 여러번 봐야지
+
+
+## [17. Sounds fishy!(6764번)](https://www.acmicpc.net/problem/6764)
+The output is one of four possibilities. If the depth readings are increasing, then the output should be Fish Rising. If the depth readings are decreasing, then the output should be Fish Diving. If the depth readings are identical, then the output should be Fish At Constant Depth. Otherwise, the output should be No Fish.
+```python
+a,b,c,d=int(input()),int(input()),int(input()),int(input())
+print([[['No Fish','Fish At Constant Depth'][a==b==c==d],'Fish Rising'][a<b<c<d],'Fish Diving'][a>b>c>d])
+```
+숏코딩 형식으로 풀어보았다.
+
+
+## [17. Sounds fishy!(6764번)](https://www.acmicpc.net/problem/6764)
+A goal is only counted if the 4 players, in order, who touched the ball prior to the goal have jersey numbers that are in strictly increasing numeric order with the highest number being the goal scorer.  
+Given a jersey number of the goal scorer, indicate how many possible combinations of players can produce a valid goal.
+```python
+a=int(input())
+print((a-3)*(a-2)*(a-1)//6)
+```
+a-1에서 3개를 고르는 경우이므로 조합공식을 이용하여 구했다.
