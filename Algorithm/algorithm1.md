@@ -299,3 +299,20 @@ a=int(input())
 print((a-3)*(a-2)*(a-1)//6)
 ```
 a-1에서 3개를 고르는 경우이므로 조합공식을 이용하여 구했다.
+
+
+## [21. Which Alien?(6778번)](https://www.acmicpc.net/problem/6778)
+TroyMartian, who has at least 3 antenna and at most 4 eyes;  
+VladSaturnian, who has at most 6 antenna and at least 2 eyes;  
+GraemeMercurian, who has at most 2 antenna and at most 3 eyes.  
+The first line contain the number of antenna that the witness claimed to have seen on the alien. The second line contain the number of eyes seen on the alien.
+```python
+a,e=int(input()),int(input())
+if a>=3 and e<=4:
+    print('TroyMartian')
+if a<=6 and e>=2:
+    print('VladSaturnian')
+if a<=2 and e<=3:
+    print('GraemeMercurian')
+```
+a-1에서 3개를 고르는 경우이므로 조합공식을 이용하여 구했다.
