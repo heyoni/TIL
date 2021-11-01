@@ -315,4 +315,24 @@ if a<=6 and e>=2:
 if a<=2 and e<=3:
     print('GraemeMercurian')
 ```
-a-1에서 3개를 고르는 경우이므로 조합공식을 이용하여 구했다.
+
+
+## [22. Koszykarz(8710번)](https://www.acmicpc.net/problem/8710)
+키, 트레이너가 원하는 키, 때렸을 때 커지는 키 각 3개의 인자가 한 줄로 주어지며 여기서 최소 몇 번을 때려야 트레이너가 원하는 키가 될 수 있는지에 대한 프로그램을 작성하여라.
+```python
+import math
+k,w,m=map(int,input().split())
+print(math.ceil((w-k)/m))
+```
+
+
+## [23. Bałwanek(8718번)](https://www.acmicpc.net/problem/8718)
+```python
+x,k=map(int,input().split())
+print([[[0,k*1750][k*1.75<=x],k*3500][k*3.5<=x],k*7000][k*7<=x])
+```
+
+
+## [24. Patyki(8723번)](https://www.acmicpc.net/problem/8723)
+```python
+```
