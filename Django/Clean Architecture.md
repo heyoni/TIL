@@ -1,4 +1,4 @@
-![image](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
+![image](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)  
 클린 아키텍처의 대표 이미지.
 
 - 서비스 로직 등 중요한 요소들은 원 안쪽에 위치하며 정보가 나타나는 view는 원의 테두리에 존재해야 한다.
