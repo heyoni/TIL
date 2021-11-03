@@ -1,4 +1,4 @@
-![스크린샷 2021-11-03 오후 3.49.52.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/8741770b-64ff-4951-a4a6-e935c183edf3/스크린샷_2021-11-03_오후_3.49.52.png)
+![image](https://www.notion.so/clean-architecture-078471ad938e47dab1a7a47534399ebf#2441ea2b954b4b569ff4b6b8c3c35a38)
 클린 아키텍처의 대표 이미지.
 
 - 서비스 로직 등 중요한 요소들은 원 안쪽에 위치하며 정보가 나타나는 view는 원의 테두리에 존재해야 한다.
