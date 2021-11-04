@@ -45,3 +45,19 @@ print(bin(int(input(),8))[2:])
 - 8진수 oct()
 - 16진수 hex()
 - n진수에서 10진수로 바꾸기 : int('숫자',n)
+
+
+## [3. 부호(1247번)](https://www.acmicpc.net/problem/1247)
+8진수가 주어졌을 때, 2진수로 변환하는 프로그램을 작성하시오.
+```python
+import sys
+input=sys.stdin.readline
+a=[]
+for i in range(3):
+    n = int(input())
+    s = [int(input()) for _ in range(n)]
+    print([['-','+'][sum(s)>0],'0'][sum(s)==0])
+```
+- input : 입력받은 값의 개행 문자를 삭제시켜서 리턴함.
+- sys.stdin.readline : 값을 불러오는 명령어, 개행 문자 포함하여 리턴.
+👉 삭제작업이 있기 때문에 input이 더 느림
