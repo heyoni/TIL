@@ -65,14 +65,18 @@ for i in range(3):
 
 
 ## [4. 핸드폰 요금(1267번)](https://www.acmicpc.net/problem/1267)
-- 영식 요금제 : 30초 마다 10원 씩 청구  
+- 영식 요금제 : 30초 마다 20원 씩 청구  
 - 민식 요금제 : 60초 마다 15원 씩 청구
 
 통화 시간 목록이 주어지면 어느 요금제를 사용 하는 것이 저렴한지 출력하는 프로그램을 작성하시오.  
 영식은 Y로, 민식은 M으로 출력한다.
 ```python
-
-n=sum(list(map(int,input().split())))+1
-print(round(n/30)*10,round(n/60)*15)
-
+import math
+n=input()
+k=list(map(int,input().split()))
+y=sum([math.ceil((k[i]+1)/30)*10 for i in range(len(k))])
+m=sum([math.ceil((k[i]+1)/60)*15 for i in range(len(k))])
+print([['M '+str(m),'Y '+str(y)][y<m],'Y M '+str(y)][y==m])
 ```
+n은 의미없음.  
+k로 통화 시간을 받아오고, y와 m을 list comprehension을 이용하여 계산해주었다.
