@@ -80,3 +80,27 @@ print([['M '+str(m),'Y '+str(y)][y<m],'Y M '+str(y)][y==m])
 ```
 n은 의미없음.  
 k로 통화 시간을 받아오고, y와 m을 list comprehension을 이용하여 계산해주었다.
+
+
+## [4. 집 주소(1284번)](https://www.acmicpc.net/problem/1284)
+- 0일 경우 +4, 1일 경우 +2, 나머지 +3
+- 각 숫자사이에 간격과 양 옆의 여백도 더해야함
+입력은 마지막에 0이 들어오기 전까지 계속해서 줄 단위로 주어진다.  
+또한, 마지막의 0은 처리하지 않는다.
+```python
+while True:
+    n=input()
+    r=0
+    if n=='0':
+        break
+    for i in list(n):
+        if int(i)==1:
+            r+=2
+        elif int(i)==0:
+            r+=4
+        else:
+            r+=3
+    r+=len(list(n))+1
+    print(r)
+```
+while 조건 : 조건이 참이면 계속 루프를 돈다.
