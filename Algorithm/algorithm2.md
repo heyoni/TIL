@@ -82,7 +82,7 @@ n은 의미없음.
 k로 통화 시간을 받아오고, y와 m을 list comprehension을 이용하여 계산해주었다.
 
 
-## [4. 집 주소(1284번)](https://www.acmicpc.net/problem/1284)
+## [5. 집 주소(1284번)](https://www.acmicpc.net/problem/1284)
 - 0일 경우 +4, 1일 경우 +2, 나머지 +3
 - 각 숫자사이에 간격과 양 옆의 여백도 더해야함
 입력은 마지막에 0이 들어오기 전까지 계속해서 줄 단위로 주어진다.  
@@ -104,3 +104,17 @@ while True:
     print(r)
 ```
 while 조건 : 조건이 참이면 계속 루프를 돈다.
+
+
+## [6. 공(1547번)](https://www.acmicpc.net/problem/1547)
+- 컵을 이동시킬 횟수 M번을 입력받고, X Y 인자값을 입력받아 컵을 이동시킨다.  
+마지막에 공이 있는 컵의 위치를 출력하는 문제.(공은 처음에 1번 컵 아래에 있다.)
+```python
+a=int(input())
+k=1
+for i in range(a):
+    x,y=map(int,input().split())
+    k=[[k,x][y==k],y][x==k]
+print(k)
+```
+리스트형을 잘 이해하니 쉬웠던 문제. 
