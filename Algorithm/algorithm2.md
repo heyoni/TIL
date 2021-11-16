@@ -118,3 +118,21 @@ for i in range(a):
 print(k)
 ```
 리스트형을 잘 이해하니 쉬웠던 문제. 
+
+
+## [7. 꼬리를 무는 숫자 나열(1598번)](https://www.acmicpc.net/problem/1598)
+- 두 개의 자연수를 아무거나 생각한다. 그리고 숫자판에서 두 개의 자연수 사이의 직각거리를 구하면 된다.
+```python
+def four(x):
+    if x%4==0:
+        return [x//4,4]
+    else:
+        return [x//4+1,x%4]
+
+x,y=map(int,input().split())
+print(x,y)
+
+x=four(x)
+y=four(y)
+print(abs(x[0]-y[0])+abs(x[1]-y[1]))
+```
