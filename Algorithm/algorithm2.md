@@ -137,28 +137,6 @@ y=four(y)
 print(abs(x[0]-y[0])+abs(x[1]-y[1])+1)
 ```
 
-## [8. 수 정렬하기 3(10989번)](https://www.acmicpc.net/problem/10989)
-- N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
-```python
-import sys
-n = int(sys.stdin.readline())
-# 카운팅 배열 선언
-counting_arr = [0] * 10001
 
-for i in range(n):
-    # 숫자 입력받는데, 누적합으로 바로 바꿔줌
-    counting_arr[int(sys.stdin.readline())] += 1
-# 출력부분 
-for i in range(10001):
-    # 0이 아님 = 숫자가 있었다는 뜻
-    if counting_arr[i] != 0:
-        # 0부터 counting_arr[i]번 까지 순회를 돌면서 i를 출력한다.
-        # 예를들어 0이 3번 나왔으면 counting_arr[0]==3, 그러니 0부터 2까지 총 3번을 돌며 0을 출력한다.
-        for j in range(counting_arr[i]):
-            print(i)
 
-```
-계수 정렬을 사용하는 문제였음.  
-- 계수 정렬이란? : 정렬을 위해 가장 큰 수 +1만큼의 크기의 배열을 만들어주고, 거기서 나온 수 만큼 카운팅을 해줌, 그리고 누적합을 통해 숫자를 정렬하는 방법을 의미한다.  
-- 계수 정렬의 시간 복잡도 : O(n)
-- 정렬해야 할 숫자가 적거나 작을 때 사용한다. 단점은 추가적인 메모리가 필요함.
+
