@@ -25,7 +25,7 @@ for i in range(10001):
 - 정렬해야 할 숫자가 적거나 작을 때 사용한다. 단점은 추가적인 메모리가 필요함.
 
 
-## [2. 나무 자르기(2805번)](https://www.acmicpc.net/problem/2805번)
+## [2. 나무 자르기(2805번)](https://www.acmicpc.net/problem/2805)
 - 적어도 M미터의 나무를 집에 가져가기 위해서 절단기에 설정할 수 있는 높이의 최댓값을 구하는 프로그램을 작성하시오.
 ```python
 import sys
@@ -61,3 +61,48 @@ print(end)
 - 이진 탐색(Binary search)은 정렬된 배열에 특정 원소가 존재하는지 여부를 파악하는 등의 문제를 O(log n) 시간에 해결하는 알고리즘이다.
 - 반으로 나누고 크면 오른쪽, 작으면 왼쪽으로 가는 로직을 반복하여 원하는 값을 찾을 수 있다.
 - 여기서는 원하는 값(m)을 찾기 위해서 이분탐색을 사용해야 하는 문제였음
+
+
+## [4. 그르다 김가놈(18113번)](https://www.acmicpc.net/problem/18113)
+- 공장에서는 김밥 N개에 대해서, 김밥 꼬다리를 잘라내고 손질된 김밥을 김밥조각으로 만드는 작업을 한다. 꼬다리를 잘라낼 때에는 양쪽에서 균일하게 K cm만큼 잘라낸다. 만약 김밥의 길이가 2K cm보다 짧아서 한쪽밖에 자르지 못한다면, 한쪽만 꼬다리를 잘라낸다. 김밥 길이가 K cm이거나 그보다 짧으면 그 김밥은 폐기한다.
+
+- 손질된 김밥들은 모두 일정한 길이 P로 잘라서 P cm의 김밥조각들로 만든다. P는 양의 정수여야 한다. 정래는 일정한 길이 P cm로 자른 김밥조각을 최소 M개 만들고 싶다. P를 최대한 길게 하고 싶을 때, P는 얼마로 설정해야 하는지 구하시오.
+```python
+import sys
+input = sys.stdin.readline
+
+n,k,m = map(int, input().split())
+kimbap, p = [],-1
+for i in range(n):
+    x = int(input())
+
+    # 꼬다리 계산하기
+    if x > 2 * k:
+        kimbap.append(x - 2 * k)
+    elif x > k and x < 2 * k:
+        kimbap.append(x - k)
+
+# 김밥 길이 계산하기 -> binary search
+if kimbap:
+    kimbap.sort()
+    start, end = 1, max(kimbap)
+
+while start <= end:
+    # 안넣어주면 틀렸습니다 나오길래 넣어줬음
+    if start > end:
+        break
+    mid = (start+end)//2
+    sum = 0
+    for i in kimbap:
+        sum += i // mid
+        if sum > m:
+            break
+
+    if sum >= m:
+        p = max(p, mid)
+        start = mid +1
+    else:
+        end = mid -1
+print(p)
+```
+마찬가지로 이분탐색을 이용하는 문제였는데, 아직 감이 확 잡히지 않아서 다시 처음부터 짜 볼 예정이다.
