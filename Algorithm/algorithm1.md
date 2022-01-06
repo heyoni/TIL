@@ -326,13 +326,4 @@ print(math.ceil((w-k)/m))
 ```
 
 
-## [23. Bałwanek(8718번)](https://www.acmicpc.net/problem/8718)
-```python
-x,k=map(int,input().split())
-print([[[0,k*1750][k*1.75<=x],k*3500][k*3.5<=x],k*7000][k*7<=x])
-```
 
-
-## [24. Patyki(8723번)](https://www.acmicpc.net/problem/8723)
-```python
-```

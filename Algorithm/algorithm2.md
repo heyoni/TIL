@@ -127,16 +127,14 @@ def four(x):
     if x%4==0:
         return [x//4,4]
     else:
-        return [x//4,x%4]
+        return [x//4+1,x%4]
 
 x,y=map(int,input().split())
-print(x,y)
 
 x=four(x)
 y=four(y)
 print(abs(x[0]-y[0])+abs(x[1]-y[1])+1)
 ```
-
 
 
 
