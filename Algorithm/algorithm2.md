@@ -137,4 +137,24 @@ print(abs(x[0]-y[0])+abs(x[1]-y[1])+1)
 ```
 
 
+## [8. 문어 숫자(1864번)](https://www.acmicpc.net/problem/1864)
+- 한 줄에 하나씩 문어 숫자가 입력으로 주어진다. 각 숫자는 최소 한 개, 최대 여덟 개의 문어 숫자 기호로 이루어져있다. 입력으로 '#'이 들어오면 입력을 종료한다.
+```python
+def find_num(i):
+    string='-\(@?>&%'
+    return string.find(i)
+n=''
 
+while True:
+    n = input()
+    if n == '#':
+        break
+    answer = 0
+    minus = 1
+    l = len(n)-1
+    for i in n:  
+        answer += (find_num(i)*8**l)
+        l -= 1
+    print(answer)
+```
+더 쉬운 방법이 있을 것 같다.
