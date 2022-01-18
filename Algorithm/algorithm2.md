@@ -158,3 +158,26 @@ while True:
     print(answer)
 ```
 더 쉬운 방법이 있을 것 같다.
+
+
+## [9. 생장점(1703번)](https://www.acmicpc.net/problem/1703)
+- 입력의 각 줄은 하나의 branchorama 나무를 의미합니다.  
+각 줄은 나무의 나이 a(1 ≤ a ≤ 20)로 시작하며, 그 뒤로 2a 개의 정수가 공백을 두고 주어집니다. 2a 개의 정수는 splitting factor와 가지치기 한 가지의 수가 level 별로 나열된 것입니다.  
+마지막 줄로  '0'이 주어지며 더 이상의 입력은 없습니다. '0'은 처리하지 않습니다.
+
+```python
+while True:
+    l = list(map(int,input().split()))
+    if l[0] == 0:
+        break
+    answer = 1
+    for i in range(1,l[0]*2+1):
+        if i % 2 ==1:
+            answer *= l[i]
+        else:
+            answer -= l[i]
+
+    print(answer) 
+```
+문제 푸는 시간보다 문제를 이해하는 시간이 더 길었다.  
+생장점, 즉 꼭대기의 개수를 구하는 문제인데 연산문제라 매우 쉬웠다.

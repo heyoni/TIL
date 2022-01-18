@@ -106,3 +106,111 @@ while start <= end:
 print(p)
 ```
 마찬가지로 이분탐색을 이용하는 문제였는데, 아직 감이 확 잡히지 않아서 다시 처음부터 짜 볼 예정이다.
+
+
+## [5. 게임 개발(1516번)](https://www.acmicpc.net/problem/1516)
+- 첫째 줄에 건물의 종류 수 N(1 ≤ N ≤ 500)이 주어진다. 다음 N개의 줄에는 각 건물을 짓는데 걸리는 시간과 그 건물을 짓기 위해 먼저 지어져야 하는 건물들의 번호가 주어진다. 건물의 번호는 1부터 N까지로 하고, 각 줄은 -1로 끝난다고 하자. 각 건물을 짓는데 걸리는 시간은 100,000보다 작거나 같은 자연수이다. 모든 건물을 짓는 것이 가능한 입력만 주어진다.
+
+- N개의 각 건물이 완성되기까지 걸리는 최소 시간을 출력한다.
+```python
+import sys
+from collections import deque
+input = sys.stdin.readline
+
+N = int(input())
+time = [0] * (N+1)
+indegree = [0] * (N+1)
+graph = [[] for _ in range(N+1)] 
+
+for i in range(1,N+1):
+    a = list(map(int,input().split()))
+    time[i] = a[0]
+    for j in a[1:-1]:
+        graph[j].append(i)
+        indegree[i] += 1
+
+def topology_sort():
+    result = [0]*(N+1)
+    q = deque()
+
+    for i in range(1, N+1):
+        if indegree[i] == 0: 
+            q.append(i)
+    for i in range(1, N+1):
+        now_node = q.popleft()
+        result[now_node] += time[now_node]
+        
+        for next_node in graph[now_node]: 
+            indegree[next_node] -= 1 
+            result[next_node] = max(result[next_node],result[now_node])
+            if indegree[next_node] == 0: 
+                q.append(next_node)
+
+    print(*result[1:])
+topology_sort()
+```
+이전에 풀었던 문제와 같이 위상정렬을 이용하여 풀었다.  
+근데 아직 result를 내는 부분을 명확하게 이해하지 못함.
+
+
+## [6. 네트워크 연결(1922번)](https://www.acmicpc.net/problem/1922)
+- 첫째 줄에 컴퓨터의 수 N (1 ≤ N ≤ 1000)가 주어진다.  
+둘째 줄에는 연결할 수 있는 선의 수 M (1 ≤ M ≤ 100,000)가 주어진다.  
+셋째 줄부터 M+2번째 줄까지 총 M개의 줄에 각 컴퓨터를 연결하는데 드는 비용이 주어진다.  
+이 비용의 정보는 세 개의 정수로 주어지는데, 만약에 a b c 가 주어져 있다고 하면 a컴퓨터와 b컴퓨터를 연결하는데 비용이 c (1 ≤ c ≤ 10,000) 만큼 든다는 것을 의미한다. a와 b는 같을 수도 있다.
+
+- 모든 컴퓨터를 연결하는데 필요한 최소비용을 첫째 줄에 출력한다.
+```python
+import sys
+input = sys.stdin.readline
+
+# 컴퓨터의 수
+N = int(input())
+# 선의 수
+M = int(input())
+
+parent = [i for i in range(N+1)]
+edges = []
+for _ in range(M):
+    a, b, cost = map(int, input().split())
+    edges.append((cost, a, b))
+
+# 최소길이로 정렬해 놓음
+edges.sort()
+
+# 부모 노드를 찾아야함 -> 사이클을 만들지 않기 위해서
+# 부모 노드를 찾기 위해서는 union-find를 사용한다.
+# 재귀함수를 통해 가장 작은 값을 가리키는 것을 찾아줌
+# ex) 1-2-3이 연결되어 있으면 table은 1 1 2 가 될 것임, 3은 2와 연결되어있고 재귀함수를 통해 2의 연결 값인 1을 연결해준다.
+def get_parent(parent, x):
+    if parent[x] == x:
+        return x
+    parent[x] = get_parent(parent, parent[x])
+    return parent[x]
+
+
+# 사이클이 없으면 합쳐준다
+# 합쳐주는 이유? 작업 후 두 트리를 하나의 트리로 만들어주기 위해서
+def union(parent, a, b):
+    a = get_parent(parent, a)
+    b = get_parent(parent, b)
+    if a < b:
+        parent[b] = a
+    else:
+        parent[a] = b    
+
+
+def kruskal(edges):
+    result = 0
+    for edge in edges:
+        cost, a, b = edge
+
+        if get_parent(parent, a) != get_parent(parent, b):
+            union(parent, a, b)
+            result += cost
+    return result
+result = kruskal(edges)
+print(result)
+    
+```
+크루스칼 알고리즘을 사용하는 문제, 조만간 벨로그에 정리할 예정임.
