@@ -240,3 +240,86 @@ for _ in range(M):
 찾아보니 '구간트리'를 이용하는 것 같았지만 이번 문제는 잘 생각해보니 누적합을 구하고 그 구간을 보여주면 되는 문제라 쉽게 구했다.  
 다만 python list comprehension을 이용하니 시간초과가 생겼는데 이유를 잘 모르겠다.  
 알아보고 벨로그에 정리해야지.
+
+
+## [6. 구간 합 구하기 (2042번)](https://www.acmicpc.net/problem/2042)
+- 어떤 N개의 수가 주어져 있다. 그런데 중간에 수의 변경이 빈번히 일어나고 그 중간에 어떤 부분의 합을 구하려 한다. 만약에 1,2,3,4,5 라는 수가 있고, 3번째 수를 6으로 바꾸고 2번째부터 5번째까지 합을 구하라고 한다면 17을 출력하면 되는 것이다. 그리고 그 상태에서 다섯 번째 수를 2로 바꾸고 3번째부터 5번째까지 합을 구하라고 한다면 12가 될 것이다.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+from math import ceil, log
+
+N, M, K = map(int,input().split())
+
+l = []
+segment_tree = [0]*(N*4)
+
+
+# 1. 트리 만들기
+def init(start, end, index):
+	# start와 end가 같다면 리프노드이다.
+    if start == end:
+        segment_tree[index] = l[start-1]
+        return segment_tree[index]
+	
+    # 현재 노드는 왼쪽 아래 노드와 오른쪽 아래 노드를 더한 값이다.
+    mid = (start+end) // 2
+    segment_tree[index] = init(start, mid, index*2) + init(mid+1, end, index*2+1)
+    return segment_tree[index]
+
+       
+# 2. 트리에서 값 찾기
+def find(start, end, index, left, right):
+	# 찾으려는 범위가 start~end 범위보다 클 경우
+    if start > right or end < left:
+        return 0
+        
+    # 찾으려는 범위가 segment tree 노드안에 구현되어 있을 경우
+    if start >= left and end <= right:
+        return segment_tree[index]
+
+	# 코드를 동작시키기 위한 기본 코드
+    # 현재 노드는 왼쪽아래 + 오른쪽아래 노드이다.
+    mid = (start + end) // 2
+    sub_sum = find(start, mid, index*2, left, right) + find(mid+1, end, index*2+1, left, right)
+    return sub_sum
+
+
+# 3. 트리 값 바꿔주기
+def update(start, end, index, update_idx, update_data):
+	# update 하려는 범위가 초과될 경우
+    if start > update_idx or end < update_idx:
+        return
+    
+    segment_tree[index] += update_data
+	
+    # 리프노드까지 바꿔주었으면 재귀함수를 끝낸다.
+    if start == end:
+        return
+
+	# 내가 관여하고 있는 노드들을 찾아서 바꿔준다 -> 재귀함수로 구현
+    mid = (start + end) // 2
+    update(start, mid, index*2, update_idx, update_data)
+    update(mid+1, end, index*2+1, update_idx, update_data)
+
+
+for _ in range(N):
+    l.append(int(input()))
+
+init(1, N, 1)
+
+for _ in range(M+K):
+    a, b, c = map(int,input().split())
+    if a == 1:
+        temp = c - l[b-1]
+        l[b-1] = c
+        update(1, N, 1, b, temp)
+
+    elif a == 2:
+        print(find(1, N, 1, b, c))
+```
+
+해설은 벨로그에 상세히 적어뒀다.
+아직 find 하는 부분이 손에 익지 않아서 한번 더 쳐 볼 예정이다.
