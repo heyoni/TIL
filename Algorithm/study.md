@@ -242,7 +242,7 @@ for _ in range(M):
 알아보고 벨로그에 정리해야지.
 
 
-## [6. 구간 합 구하기 (2042번)](https://www.acmicpc.net/problem/2042)
+## [7. 구간 합 구하기 (2042번)](https://www.acmicpc.net/problem/2042)
 - 어떤 N개의 수가 주어져 있다. 그런데 중간에 수의 변경이 빈번히 일어나고 그 중간에 어떤 부분의 합을 구하려 한다. 만약에 1,2,3,4,5 라는 수가 있고, 3번째 수를 6으로 바꾸고 2번째부터 5번째까지 합을 구하라고 한다면 17을 출력하면 되는 것이다. 그리고 그 상태에서 다섯 번째 수를 2로 바꾸고 3번째부터 5번째까지 합을 구하라고 한다면 12가 될 것이다.
 
 ```python
@@ -323,3 +323,45 @@ for _ in range(M+K):
 
 해설은 벨로그에 상세히 적어뒀다.
 아직 find 하는 부분이 손에 익지 않아서 한번 더 쳐 볼 예정이다.
+
+## [8. 폰 호석만 (21275번)](https://www.acmicpc.net/problem/21275)
+- 첫번째 줄에 X를 A진법으로 표현한 값과 X를 B진법으로 표현한 값이 공백으로 구분되어 주어진다. 각 자리수는 0 이상 z 이하이다. a부터 z 는 10부터 35 를 의미한다.  
+만약 문제의 조건에 맞는 X, A, B가 유일하게 존재한다면, X를 십진법으로 표현한 수와 A와 B를 공백으로 나누어 출력하라. 만약 만족하는 경우가 2가지 이상이라면 "Multiple"을, 없다면 "Impossible"을 출력하라.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+A, B = input().split()
+x, a, b = 0, 0, 0 # 출력할 값
+count = 0 # 조건에 맞는 값이 몇개인지 카운팅해주는 변수
+
+
+# 1. A를 가지고 2부터 36진수 중 표현이 가능한 값을 찾음
+for i in range(2, 37):
+    try:
+        a_temp = int(A, i)
+    except:
+        continue
+    # 2. B를 가지고 2부터 36진수 중 표현이 가능한 값을 찾음
+    for j in range(2, 37):
+        try:
+            b_temp = int(B, j)
+            # 3. 진수 변환한 값들이 같을 떄
+            if a_temp == b_temp:
+                count += 1
+                x = a_temp
+                a = i
+                b = j
+        except:
+            continue
+
+if count == 1:
+    print(x,a,b)
+elif count == 0:
+    print("Impossible")
+else:
+    print("Multiple")
+
+```
+`int(i, j)`는 i를 j로 형변환 해주는 명령어다.
