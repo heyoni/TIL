@@ -1,10 +1,12 @@
 # 백준 알고리즘 - Bronze III
+
 https://solved.ac/problems/level/3
 
-
 ## [1. 분산처리(1009번)](https://www.acmicpc.net/problem/1009)
+
 입력의 첫 줄에는 테스트 케이스의 개수 T가 주어진다. 그 다음 줄부터 각각의 테스트 케이스에 대해 정수 a와 b가 주어진다.  
 각 테스트 케이스에 대해 마지막 데이터가 처리되는 컴퓨터의 번호를 출력한다.
+
 ```python
 a=int(input())
 r=[]
@@ -31,24 +33,28 @@ for i in range(a):
 for i in r:
     print(i)
 ```
+
 처음에는 제곱을 사용했는데 시간초과 오류가 나서 패턴들을 분석해봤다.  
 제곱근의 끝 자리가 일정 패턴으로 반복되는 것을 확인할 수 있었고 이를 토대로 그냥 막 만들어봄.  
 최적화는 다음에...
 
-
 ## [2. 8진수 2진수(1212번)](https://www.acmicpc.net/problem/1212)
+
 8진수가 주어졌을 때, 2진수로 변환하는 프로그램을 작성하시오.
+
 ```python
 print(bin(int(input(),8))[2:])
 ```
+
 - 2진수 bin()
 - 8진수 oct()
 - 16진수 hex()
 - n진수에서 10진수로 바꾸기 : int('숫자',n)
 
-
 ## [3. 부호(1247번)](https://www.acmicpc.net/problem/1247)
+
 8진수가 주어졌을 때, 2진수로 변환하는 프로그램을 작성하시오.
+
 ```python
 import sys
 input=sys.stdin.readline
@@ -58,18 +64,19 @@ for i in range(3):
     s = [int(input()) for _ in range(n)]
     print([['-','+'][sum(s)>0],'0'][sum(s)==0])
 ```
+
 - input : 입력받은 값의 개행 문자를 삭제시켜서 리턴함.
 - sys.stdin.readline : 값을 불러오는 명령어, 개행 문자 포함하여 리턴.
-👉 삭제작업이 있기 때문에 input이 더 느림
-
-
+  👉 삭제작업이 있기 때문에 input이 더 느림
 
 ## [4. 핸드폰 요금(1267번)](https://www.acmicpc.net/problem/1267)
-- 영식 요금제 : 30초 마다 20원 씩 청구  
+
+- 영식 요금제 : 30초 마다 20원 씩 청구
 - 민식 요금제 : 60초 마다 15원 씩 청구
 
 통화 시간 목록이 주어지면 어느 요금제를 사용 하는 것이 저렴한지 출력하는 프로그램을 작성하시오.  
 영식은 Y로, 민식은 M으로 출력한다.
+
 ```python
 import math
 n=input()
@@ -78,15 +85,17 @@ y=sum([math.ceil((k[i]+1)/30)*10 for i in range(len(k))])
 m=sum([math.ceil((k[i]+1)/60)*15 for i in range(len(k))])
 print([['M '+str(m),'Y '+str(y)][y<m],'Y M '+str(y)][y==m])
 ```
+
 n은 의미없음.  
 k로 통화 시간을 받아오고, y와 m을 list comprehension을 이용하여 계산해주었다.
 
-
 ## [5. 집 주소(1284번)](https://www.acmicpc.net/problem/1284)
+
 - 0일 경우 +4, 1일 경우 +2, 나머지 +3
 - 각 숫자사이에 간격과 양 옆의 여백도 더해야함
-입력은 마지막에 0이 들어오기 전까지 계속해서 줄 단위로 주어진다.  
-또한, 마지막의 0은 처리하지 않는다.
+  입력은 마지막에 0이 들어오기 전까지 계속해서 줄 단위로 주어진다.  
+  또한, 마지막의 0은 처리하지 않는다.
+
 ```python
 while True:
     n=input()
@@ -103,12 +112,14 @@ while True:
     r+=len(list(n))+1
     print(r)
 ```
+
 while 조건 : 조건이 참이면 계속 루프를 돈다.
 
-
 ## [6. 공(1547번)](https://www.acmicpc.net/problem/1547)
+
 - 컵을 이동시킬 횟수 M번을 입력받고, X Y 인자값을 입력받아 컵을 이동시킨다.  
-마지막에 공이 있는 컵의 위치를 출력하는 문제.(공은 처음에 1번 컵 아래에 있다.)
+  마지막에 공이 있는 컵의 위치를 출력하는 문제.(공은 처음에 1번 컵 아래에 있다.)
+
 ```python
 a=int(input())
 k=1
@@ -117,11 +128,13 @@ for i in range(a):
     k=[[k,x][y==k],y][x==k]
 print(k)
 ```
-리스트형을 잘 이해하니 쉬웠던 문제. 
 
+리스트형을 잘 이해하니 쉬웠던 문제.
 
 ## [7. 꼬리를 무는 숫자 나열(1598번)](https://www.acmicpc.net/problem/1598)
+
 - 두 개의 자연수를 아무거나 생각한다. 그리고 숫자판에서 두 개의 자연수 사이의 직각거리를 구하면 된다.
+
 ```python
 def four(x):
     if x%4==0:
@@ -136,9 +149,10 @@ y=four(y)
 print(abs(x[0]-y[0])+abs(x[1]-y[1])+1)
 ```
 
-
 ## [8. 문어 숫자(1864번)](https://www.acmicpc.net/problem/1864)
+
 - 한 줄에 하나씩 문어 숫자가 입력으로 주어진다. 각 숫자는 최소 한 개, 최대 여덟 개의 문어 숫자 기호로 이루어져있다. 입력으로 '#'이 들어오면 입력을 종료한다.
+
 ```python
 def find_num(i):
     string='-\(@?>&%'
@@ -152,18 +166,19 @@ while True:
     answer = 0
     minus = 1
     l = len(n)-1
-    for i in n:  
+    for i in n:
         answer += (find_num(i)*8**l)
         l -= 1
     print(answer)
 ```
+
 더 쉬운 방법이 있을 것 같다.
 
-
 ## [9. 생장점(1703번)](https://www.acmicpc.net/problem/1703)
+
 - 입력의 각 줄은 하나의 branchorama 나무를 의미합니다.  
-각 줄은 나무의 나이 a(1 ≤ a ≤ 20)로 시작하며, 그 뒤로 2a 개의 정수가 공백을 두고 주어집니다. 2a 개의 정수는 splitting factor와 가지치기 한 가지의 수가 level 별로 나열된 것입니다.  
-마지막 줄로  '0'이 주어지며 더 이상의 입력은 없습니다. '0'은 처리하지 않습니다.
+  각 줄은 나무의 나이 a(1 ≤ a ≤ 20)로 시작하며, 그 뒤로 2a 개의 정수가 공백을 두고 주어집니다. 2a 개의 정수는 splitting factor와 가지치기 한 가지의 수가 level 별로 나열된 것입니다.  
+  마지막 줄로 '0'이 주어지며 더 이상의 입력은 없습니다. '0'은 처리하지 않습니다.
 
 ```python
 while True:
@@ -177,7 +192,38 @@ while True:
         else:
             answer -= l[i]
 
-    print(answer) 
+    print(answer)
 ```
+
 문제 푸는 시간보다 문제를 이해하는 시간이 더 길었다.  
 생장점, 즉 꼭대기의 개수를 구하는 문제인데 연산문제라 매우 쉬웠다.
+
+## [10. 블랙잭(2798번)](https://www.acmicpc.net/problem/2798)
+
+- N장의 카드에 써져 있는 숫자가 주어졌을 때, M을 넘지 않으면서 M에 최대한 가까운 카드 3장의 합을 구해 출력하시오.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N, M = map(int,input().split())
+cards = list(map(int,input().split()))
+sum = 0
+
+# 1. 모든 수 계산
+for i in range(N):
+    for j in range(i+1, N-1):
+        for k in range(j+1, N):
+            if cards[i] + cards[j] + cards[k] > M:
+                continue
+            else:
+                sum = max(sum, (cards[i]+cards[j]+cards[k]))
+
+
+print(sum)
+```
+
+- 브루스 포트 알고리즘을 이용하는 문제.  
+  브루스 포트(brute force) : 답이 나올 때까지 가능한 모든 조합을 다 탐색한다.
+- 세그먼트 트리로 계산하려 했는데, 풀다보니 세그먼트 트리는 모든 조합 계산이 아니었다..!
