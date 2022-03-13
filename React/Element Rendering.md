@@ -19,6 +19,8 @@ const element = <h1>Hello, world</h1>;
 <div id="root"></div>
 ```
 
+위 노드를 '루트'DOM 노드라고 부른다. 👉ㅤ여기서 jsx코드가 삽입됨, ReactDOM에서 관리함
+
 ```js
 const element = <h1>Hello, world</h1>;
 ReactDOM.render(element, document.getElementById("root"));
