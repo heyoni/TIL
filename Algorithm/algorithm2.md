@@ -255,3 +255,35 @@ print(result)
 
 '브루스포트'를 이용하여 푸는 문제로, 전부 다 구해보는 코드를 짰다.  
 전부 다 구하기에는 시간이 초과될 것 같아서 절반부터 구함.
+
+## [12. 덩치(7568번)](https://www.acmicpc.net/problem/7568)
+
+- 학생 N명의 몸무게와 키가 담긴 입력을 읽어서 각 사람의 덩치 등수를 계산하여 출력하라.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+l = []
+
+for i in range(N):
+    x, y = map(int,input().split())
+    l.append([x,y])
+
+# 1. 구현하기
+for i in l:
+    point = 1
+    for n in l:
+        # 1-1. 몸무게가 같지 않고, 키도 같지 않을 때
+        if (i[0] != n[0]) & (i[1] != n[1]):
+            # 1-2. 키가 작거나 몸무게가 작으면 순서를 미뤄준다.
+            if (i[0] < n[0]) & (i[1] < n[1]):
+                point+=1
+    # 2. 출력하기 -> 바로 print해줌
+    print(point)
+```
+
+전부 다 계산하면 비효율적일 것 같아서 몸무게로 정렬을 한 다음 구현하려 했으나, 실력 부족으로..😢 실패했다.  
+그래서 그냥 전부 다 탐색하면서 계산했다.
