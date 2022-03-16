@@ -310,3 +310,25 @@ while N != 0:
 
 print(end_number)
 ```
+
+파이썬 문자열함수를 이용하여 666이 들어가있는지를 체크하고, 없을 경우 int형으로 바꿔서 1을 더해준다.
+
+## [13. 팩토리얼(10872)](https://www.acmicpc.net/problem/10872)
+
+- 0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+
+# 1. 구현하기
+def factorial(f):
+    if f == 0:
+        return 1
+    return f * factorial(f-1)
+
+print(factorial(N))
+```
