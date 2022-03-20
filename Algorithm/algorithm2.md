@@ -288,7 +288,7 @@ for i in l:
 전부 다 계산하면 비효율적일 것 같아서 몸무게로 정렬을 한 다음 구현하려 했으나, 실력 부족으로..😢 실패했다.  
 그래서 그냥 전부 다 탐색하면서 계산했다.
 
-## [12. 영화감독 숌(1436번)](https://www.acmicpc.net/problem/1436)
+## [13. 영화감독 숌(1436번)](https://www.acmicpc.net/problem/1436)
 
 - 종말의 수는 666이 들어가야 한다. 첫째 줄에 숫자 N이 주어지고, N번째 영화의 제목에 들어간 숫자를 출력하는 프로그램을 작성하시오.
 
@@ -313,7 +313,7 @@ print(end_number)
 
 파이썬 문자열함수를 이용하여 666이 들어가있는지를 체크하고, 없을 경우 int형으로 바꿔서 1을 더해준다.
 
-## [13. 팩토리얼(10872)](https://www.acmicpc.net/problem/10872)
+## [14. 팩토리얼(10872)](https://www.acmicpc.net/problem/10872)
 
 - 0보다 크거나 같은 정수 N이 주어진다. 이때, N!을 출력하는 프로그램을 작성하시오.
 
@@ -331,4 +331,23 @@ def factorial(f):
     return f * factorial(f-1)
 
 print(factorial(N))
+```
+
+## [15. 수 정렬하기(2750)](https://www.acmicpc.net/problem/2750)
+
+N개의 수가 주어졌을 때, 이를 오름차순으로 정렬하는 프로그램을 작성하시오.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+l = []
+
+# 1. 구현하기
+for i in range(N):
+    l.append(int(input()))
+
+print(*sorted(l))
 ```
