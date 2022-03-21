@@ -351,3 +351,44 @@ for i in range(N):
 
 print(*sorted(l))
 ```
+
+## [16. 수 정렬하기(2108)](https://www.acmicpc.net/problem/2108)
+
+N개의 수가 주어졌을 때, 네 가지 기본 통계값(산술평균, 중앙값, 최빈값, 범위)을 구하는 프로그램을 작성하시오.
+
+```python
+# 0. 입력받기
+import sys
+from collections import Counter
+input = sys.stdin.readline
+
+N = int(input())
+l = []
+
+# 1. 구현하기
+for _ in range(N):
+    l.append(int(input()))
+
+l = sorted(l)
+k = []
+
+# 산술평균
+k.append(round(sum(l)/N))
+# 중앙값
+k.append(l[N//2])
+# 최빈값
+cnt = Counter(l).most_common(2)
+if len(l) > 1:
+    if cnt[0][1] == cnt[1][1]:
+        k.append(cnt[1][0])
+    else:
+        k.append(cnt[0][0])
+else:
+    k.append(cnt[0][0])
+# 범위
+k.append(l[-1] - l[0])
+
+print(*k)
+```
+
+Counter를 이용하여 최빈값을 쉽게 구할 수 있다.
