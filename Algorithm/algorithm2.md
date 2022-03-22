@@ -392,3 +392,16 @@ print(*k)
 ```
 
 Counter를 이용하여 최빈값을 쉽게 구할 수 있다.
+
+## [16. 소트인사이드(1427)](https://www.acmicpc.net/problem/1427)
+
+수가 주어지면, 그 수의 각 자리수를 내림차순으로 정렬해라.
+
+```python
+# 실패
+print(*sorted(list(map(int,str(input()[:-1]))),reverse=True),sep='')
+# 성공
+print(*sorted(list(input()))[::-1],sep='')
+```
+
+둘 다 똑같은 결과가 나오는데 왜 틀렸는지 모르겠다.
