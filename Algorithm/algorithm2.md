@@ -393,7 +393,7 @@ print(*k)
 
 Counter를 이용하여 최빈값을 쉽게 구할 수 있다.
 
-## [16. 소트인사이드(1427)](https://www.acmicpc.net/problem/1427)
+## [17. 소트인사이드(1427)](https://www.acmicpc.net/problem/1427)
 
 수가 주어지면, 그 수의 각 자리수를 내림차순으로 정렬해라.
 
@@ -405,3 +405,26 @@ print(*sorted(list(input()))[::-1],sep='')
 ```
 
 둘 다 똑같은 결과가 나오는데 왜 틀렸는지 모르겠다.
+
+## [18. 좌표 정렬하기(11650)](https://www.acmicpc.net/problem/11650)
+
+좌표가 입력되면 순서대로 정렬하기.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+l = []
+# 1.구현하기 -> 리스트에 붙이고 정렬
+for i in range(N):
+    t = list(map(int,input().split()))
+    l.append(t)
+
+l = sorted(l)
+for i in l:
+    print(*i)
+```
+
+x,y를 입력받고 리스트 형태로 리스트에 저장한다. 그 다음 리스트 정렬을 이용하여 오름차순으로 정렬한다.
