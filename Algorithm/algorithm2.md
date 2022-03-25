@@ -428,3 +428,27 @@ for i in l:
 ```
 
 x,y를 입력받고 리스트 형태로 리스트에 저장한다. 그 다음 리스트 정렬을 이용하여 오름차순으로 정렬한다.
+
+## [19. 좌표 정렬하기(11651)](https://www.acmicpc.net/problem/11651)
+
+좌표가 입력되면 y값을 기준으로 순서대로 정렬하기.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+l = []
+
+for i in range(N):
+    t = list(map(int,input().split()))
+    l.append(t)
+
+#구현하기
+l.sort(key=lambda x : (x[1],x[0]))
+for i in l:
+    print(*i)
+```
+
+lambda를 이용하여 구현하였다. x[1]번째를 기준으로 정렬하고, 같을 경우 x[0]을 기준으로 정렬해야 하기 떄문에 x[1]이 아닌 `(x[1],x[0])`을 주었다.
