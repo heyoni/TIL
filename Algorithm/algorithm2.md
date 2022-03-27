@@ -452,3 +452,30 @@ for i in l:
 ```
 
 lambda를 이용하여 구현하였다. x[1]번째를 기준으로 정렬하고, 같을 경우 x[0]을 기준으로 정렬해야 하기 떄문에 x[1]이 아닌 `(x[1],x[0])`을 주었다.
+
+## [20. 좌표 정렬하기(1181)](https://www.acmicpc.net/problem/1181)
+
+알파벳 소문자로 이루어진 N개의 단어가 들어오면 아래와 같은 조건에 따라 정렬하는 프로그램을 작성하시오.
+
+1. 길이가 짧은 것부터
+2. 길이가 같으면 사전 순으로
+   같은 단어가 여러번 입력된 경우는 한 번만 출력한다.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+l = []
+
+for i in range(N):
+    l.append(input().strip())
+
+# 1. 구현하기
+l = sorted(list(set(l)))
+l.sort(key=lambda x : len(x))
+print(*l)
+```
+
+마찬가지로 lambda를 이용해서 풀었음. 중복처리 조건을 꼼꼼하게 보지 못해서 잠깐 헤맸다.
