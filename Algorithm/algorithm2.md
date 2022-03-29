@@ -479,3 +479,26 @@ print(*l)
 ```
 
 마찬가지로 lambda를 이용해서 풀었음. 중복처리 조건을 꼼꼼하게 보지 못해서 잠깐 헤맸다.
+
+## [21. 좌표 압축(18870)](https://www.acmicpc.net/problem/18870)
+
+Xi를 좌표 압축한 결과 X'i의 값은 Xi > Xj를 만족하는 서로 다른 좌표의 개수와 같아야 한다.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+l = list(map(int,input().split()))
+
+# 1. 해결하기
+# set으로 중복을 제거하고, dic을 만들어서 시간복잡도 1로 좌표를 구하게 함
+clear_l = sorted(list(set(l)))
+dic = {clear_l[i] : i for i in range(len(clear_l))}
+
+for i in l:
+    print(dic[i], end=' ')
+```
+
+처음에는 index를 이용해서 풀었는데 시간초과가 났다. index는 시간복잡도가 N인 반면 dictionary 형은 시간복잡도가 1이다.
