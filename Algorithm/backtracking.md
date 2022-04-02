@@ -1,6 +1,6 @@
 ## [1. N과 M(15649)](https://www.acmicpc.net/problem/15649)
 
-자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.
+자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.(중복x)
 
 ```python
 # 0. 입력받기
@@ -30,7 +30,7 @@ backtracking()
 백트레킹 : 퇴각검색, 길을 가다가 이 길이 아닌 것 같으면 왔던 길로 되돌아가 다른 경로를 탐색한다.  
 "만든 수열 안에 값이 있으면 재귀하여 새로운 값을 넣는다."
 
-## [1. N과 M2(15650)](https://www.acmicpc.net/problem/15650)
+## [2. N과 M2(15650)](https://www.acmicpc.net/problem/15650)
 
 자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 중복없는 수열을 모두 구하는 프로그램을 작성하시오. 단, 오름차순
 
@@ -60,3 +60,30 @@ backtracking(1)
 
 1, 2는 이미 뽑혔으므로 2, 1은 뽑을 수 없다. 그러므로 start값이 무조건 커야한다. 그래서 새로운 조건을 추가했다.  
 처음에는 set을 이용하여 풀었는데, 틀린 답이라고 해서 다시 작성했다. 알 수록 어려운 알고리즘의 세계...
+
+## [3. N과 M2(15650)](https://www.acmicpc.net/problem/15650)
+
+자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.(중복o)
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N, M = map(int,input().split())
+l = []
+
+def backtracking3():
+    if len(l) == M:
+        print(*l)
+        return
+
+    for i in range(1,N+1):
+        l.append(i)
+        backtracking3()
+        l.pop()
+
+backtracking3()
+```
+
+이게 백트레킹 1번 문제였어야 하지 않나.. 1, 2번 문제를 풀었으면 굉장히 쉽게 풀 수 있는 문제였다. if문을 제거하면 끝.
