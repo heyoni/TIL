@@ -87,3 +87,31 @@ backtracking3()
 ```
 
 이게 백트레킹 1번 문제였어야 하지 않나.. 1, 2번 문제를 풀었으면 굉장히 쉽게 풀 수 있는 문제였다. if문을 제거하면 끝.
+
+## [4. N과 M3(15652)](https://www.acmicpc.net/problem/15652)
+
+자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.(중복o, 비 내림차순)
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N, M = map(int,input().split())
+l = []
+
+def backtracking4(start):
+    if len(l) == M:
+        print(*l)
+        return
+
+    for i in range(start,N+1):
+        l.append(i)
+        backtracking4(i)
+        l.pop()
+
+backtracking4(1)
+```
+
+비 내림차순 : 길이가 K인 수열 A가 A1 ≤ A2 ≤ ... ≤ AK-1 ≤ AK를 만족하면, 비내림차순이라고 한다.  
+2, 3번 문제를 섞어서 정답을 유추했다.
