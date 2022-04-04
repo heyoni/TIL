@@ -88,7 +88,7 @@ backtracking3()
 
 이게 백트레킹 1번 문제였어야 하지 않나.. 1, 2번 문제를 풀었으면 굉장히 쉽게 풀 수 있는 문제였다. if문을 제거하면 끝.
 
-## [4. N과 M3(15652)](https://www.acmicpc.net/problem/15652)
+## [4. N과 M4(15652)](https://www.acmicpc.net/problem/15652)
 
 자연수 N과 M이 주어졌을 때, 아래 조건을 만족하는 길이가 M인 수열을 모두 구하는 프로그램을 작성하시오.(중복o, 비 내림차순)
 
@@ -115,3 +115,53 @@ backtracking4(1)
 
 비 내림차순 : 길이가 K인 수열 A가 A1 ≤ A2 ≤ ... ≤ AK-1 ≤ AK를 만족하면, 비내림차순이라고 한다.  
 2, 3번 문제를 섞어서 정답을 유추했다.
+
+## [5. N-Queen(9663)](https://www.acmicpc.net/problem/9663)
+
+N-Queen 문제는 크기가 N × N인 체스판 위에 퀸 N개를 서로 공격할 수 없게 놓는 문제이다.
+
+N이 주어졌을 때, 퀸을 놓는 방법의 수를 구하는 프로그램을 작성하시오.
+
+```python
+# 0. 입력받기
+import sys
+input = sys.stdin.readline
+
+N = int(input())
+
+l = []
+answer = 0
+row = [0] * N
+
+def is_there_queen(x):
+    for i in range(x):
+        if row[x] == row[i] or abs(row[x] - row[i]) == abs(x - i):
+            return False
+
+    return True
+
+
+def set_queen(x):
+    global answer
+    if x == N:
+        answer += 1
+        return
+    else:
+        for i in range(N):
+            row[x] = i
+            if is_there_queen(x):
+                set_queen(x+1)
+
+set_queen(0)
+print(answer)
+```
+
+1차원 배열로 퀸들의 위치를 정하고, 해당 퀸을 놓을 수 있는지에 대해서는 is_there_queen을 이용하여 검사한다.  
+퀸이 죽지 않으려면
+
+1. 같은 열인지
+2. 왼쪽 아래/오른쪽 아래 대각선에 있는지
+
+를 체크해줘야 한다.  
+다른 방향을 체크해주지 않는 이유는 1행 1열부터 차근히 내려오기 때문에 이전 행열은 생각하지 않아도 된다.
+python에서는 작동하지 않아서 pypy를 사용했다.
