@@ -502,3 +502,13 @@ for i in l:
 ```
 
 처음에는 index를 이용해서 풀었는데 시간초과가 났다. index는 시간복잡도가 N인 반면 dictionary 형은 시간복잡도가 1이다.
+
+## [22. AxB(10998)](https://www.acmicpc.net/problem/10998)
+
+AxB를 출력하라.
+
+```python
+# 0. 입력받기
+A,B = map(int,input().split())
+print(A*B)
+```
