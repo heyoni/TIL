@@ -512,3 +512,23 @@ AxB를 출력하라.
 A,B = map(int,input().split())
 print(A*B)
 ```
+
+쉬어가기
+
+## [22. 달팽이는 올라가고 싶다 - 실패(2869)](https://www.acmicpc.net/problem/2869)
+
+달팽이는 낮에 A미터 올라갈 수 있다. 하지만, 밤에 잠을 자는 동안 B미터 미끄러진다. 또, 정상에 올라간 후에는 미끄러지지 않는다.
+
+달팽이가 나무 막대를 모두 올라가려면, 며칠이 걸리는지 구하는 프로그램을 작성하시오.
+
+```python
+A,B,V = map(int,input().split())
+count = 1
+while True:
+    if V <= A * count - B * (count-1):
+        print(count)
+        break
+    count += 1
+```
+
+시간초과 난 문제. 효율적으로 어떻게 풀 수 있을까..?
