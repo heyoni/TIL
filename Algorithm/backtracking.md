@@ -166,4 +166,41 @@ print(answer)
 다른 방향을 체크해주지 않는 이유는 1행 1열부터 차근히 내려오기 때문에 이전 행열은 생각하지 않아도 된다.
 python에서는 작동하지 않아서 pypy를 사용했다.
 
+## [6. 스도쿠(2580)](https://www.acmicpc.net/problem/2580)
 
+스도쿠 판의 최종 모습을 출력하라.
+
+```python
+result=[]
+data = [1,2,3,4,5,6,7,8,9]
+
+for _ in range(9):
+    result.append(list(map(int, input().split())))
+
+def find_number(x,y):
+    # 행열에서 없는 값을 뽑아옴
+    x = find_missing_numbers(result[x])
+    y = find_missing_numbers(list(zip(*result))[y])
+    r = [x,y][len(x)<len(y)]
+
+    if len(r) == 1:
+        result[x][y] = r[0]
+        return
+
+def find_missing_numbers(k):
+    r = []
+    for i in k:
+        if i not in data:
+            r.append(i)
+
+    return r
+
+for i in range(9):
+    for j in range(9):
+        if result[i][j] == 0:
+            find_number(i,j)
+```
+
+풀다보니 이게 아닌데...? 싶어서 그만뒀다. 이건 아무리봐도 백트래킹이 아니라 막구현임.  
+어떻게 하면 알고리즘을 생각나는 대로 구현할 수 있을까?  
+이론을 다 외워야하나?.. 알고리즘은 너무 어렵다.
